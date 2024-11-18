@@ -12,6 +12,7 @@ protected:
 private:
     void setDatos();
     void llenarMatrices();
+    void metodo();
     void imprimirMatriz();
 
 public:
