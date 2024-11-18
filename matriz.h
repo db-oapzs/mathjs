@@ -6,16 +6,20 @@ protected:
     double **matriz, **matrizId, **matrizInv, *vectorRt;
     double pivote;
     int filas, columnas;
+    int filasAux, columnasAux;
+    bool entrada;
 
-    void inicializarMatriz(int filas, int columnas);
+private:
+    void setDatos();
+    void llenarMatrices();
+    void imprimirMatriz();
 
 public:
-    Matriz(int filas, int columnas);
+    void proceso();
+    void liberarRecursos();
+	void inicializarMatrices();
+    Matriz();
     ~Matriz();
-
-    void llenar();
-    void mostrar();
-    void calcularInversa();
 };
 
-#endif 
+#endif
