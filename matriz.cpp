@@ -10,6 +10,7 @@ Matriz::Matriz() {
     this->filasAux = 0;
 	this->columnasAux = 0;
     this->inicializarMatrices();
+    this->entrada = true;
 }
 
 Matriz::~Matriz() {
@@ -28,6 +29,7 @@ void Matriz::inicializarMatrices() {
     }
 
     this->vectorRt = new double[this->filas]{};
+    this->vectorInv = new double[this->filas]{};
 }
 
 void Matriz::liberarRecursos() {
@@ -57,6 +59,8 @@ void Matriz::liberarRecursos() {
 
     delete[] this->vectorRt;
     this->vectorRt = nullptr;
+    delete[] this->vectorInv;
+    this->vectorInv = nullptr;
 }
 
 void Matriz::setDatos() {
@@ -102,26 +106,69 @@ void Matriz::setDatos() {
     int dt2Aux = this->columnas;
 
     this->inicializarMatrices();
-    
-	for(int i = 0 ; i < this->filas ; i++){
-		for(int j  = 0 ; j < this->columnas ; j++){
-			this->matriz[i][j] = 0.0;
-			this->matrizId[i][j] = 0.0;
-			this->matrizInv[i][j] = 0.0;
-			if(i == j) {
-				this->matrizId[i][j] = 1.0;
-			}
-		}
-			this->vectorRt[i] = 0.0;
+    cout<<"\n ¿Desea llenar la matriz manualmente?	(S/n): ";
+    char opcllenado;
+    cin >> opcllenado;
+    if(opcllenado == 's' || opcllenado == 'S'){
+    	this->entrada = true;
+	}else if(opcllenado == 'S' || opcllenado == 'N'){
+    	this->entrada = false;
+	}else{
+    	this->entrada = false;
 	}
     
 	this->filas = this->filasAux;
 	this->columnas = this->columnasAux;
+	
 	this->filasAux = dt1Aux;
 	this->columnasAux = dt2Aux;
+	
+	
+	
+	
+	if(this->entrada){
+		for(int i = 0 ; i < this->filas ; i++){
+			for(int j  = 0 ; j < this->columnas ; j++){
+				cin>>this->matriz[i][j];
+			}	
+				cin>>this->vectorRt[i];
+		}	
+		
+		for(int i = 0 ; i < this->filasAux ; i++){
+			for(int j  = 0 ; j < this->columnasAux ; j++){
+				this->matrizId[i][j] = 0.0;
+				this->matrizInv[i][j] = 0.0;
+				if(i == j) {
+					this->matrizId[i][j] = 1.0;
+				}
+			}
+				this->vectorInv[i] = 1;
+		}	
+	}else{
+		for(int i = 0 ; i < this->filas ; i++){
+			for(int j  = 0 ; j < this->columnas ; j++){
+				this->matriz[i][j] = rand() % 20 + 1;
+			}
+				this->vectorRt[i] =  rand() % 50 + 1;
+		}
+		
+		for(int i = 0 ; i < this->filasAux ; i++){
+			for(int j  = 0 ; j < this->columnasAux ; j++){
+				this->matrizId[i][j] = 0.0;
+				this->matrizInv[i][j] = 0.0;
+				if(i == j) {
+					this->matrizId[i][j] = 1.0;
+				}
+			}
+				this->vectorInv[i] = 1;
+		}		
+	}
 }
 
 void Matriz::llenarMatrices() {
+}
+
+void Matriz::imprimirMatriz() {
 	
     cout << "\n\n\n=================== Matriz ===================\n\n";
     for (int i = 0; i < this->filasAux; i++) {
@@ -151,6 +198,11 @@ void Matriz::llenarMatrices() {
     for (int i = 0; i < this->filasAux; i++) {
         cout << setw(10) << fixed << setprecision(2) << this->vectorRt[i] << "\n";
     }
+    
+    cout << "\n\n\n=================== Vector Inverzo Resultante ================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        cout << setw(10) << fixed << setprecision(2) << this->vectorInv[i] << "\n";
+    }
 
     cout << "\n\n\n=================== Matriz Completa ==================\n\n";
     for (int i = 0; i < this->filasAux; i++) {
@@ -162,19 +214,18 @@ void Matriz::llenarMatrices() {
             cout << setw(10) << fixed << setprecision(2) << this->matrizId[i][j];
         }
         cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorRt[i];
+        cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorInv[i];
         cout << "\n";
     }
 
     cout << "\n\n\n=====================================================\n\n";
-}
-
-void Matriz::imprimirMatriz() {
 }
 void Matriz::proceso() {
     char dt;
     do {
         this->setDatos();
         this->llenarMatrices();
+        this->imprimirMatriz();
         
         
         

@@ -3,7 +3,7 @@
 
 class Matriz {
 protected:
-    double **matriz, **matrizId, **matrizInv, *vectorRt;
+    double **matriz, **matrizId, **matrizInv, *vectorRt, *vectorInv;
     double pivote;
     int filas, columnas;
     int filasAux, columnasAux;
