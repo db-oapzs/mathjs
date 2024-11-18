@@ -85,8 +85,6 @@ void Matriz::setDatos() {
         this->columnas = 1;
     }
     
-    
-    
 	this->filasAux = this->filas;
 	this->columnasAux = this->columnas;
 	
@@ -116,7 +114,6 @@ void Matriz::setDatos() {
 		}
 			this->vectorRt[i] = 0.0;
 	}
-	
     
 	this->filas = this->filasAux;
 	this->columnas = this->columnasAux;
@@ -125,29 +122,50 @@ void Matriz::setDatos() {
 }
 
 void Matriz::llenarMatrices() {
-	cout<<"\n\n\n___________________ Matriz ___________________\n\n\n";
-	for(int i = 0 ; i < this->filasAux ; i++){
-		for(int j  = 0 ; j < this->columnasAux ; j++){
-			cout<<"  "<<this->matriz[i][j]<<"  ";
-		}cout<<"\n";
-	}
-	cout<<"\n\n\n___________________ Matriz inverza ___________________\n\n\n";
-	for(int i = 0 ; i < this->filasAux ; i++){
-		for(int j  = 0 ; j < this->columnasAux ; j++){
-			cout<<"  "<<this->matrizInv[i][j]<<"  ";
-		}cout<<"\n";
-	}
-	cout<<"\n\n\n___________________ Matriz Identidad ___________________\n\n\n";
-	for(int i = 0 ; i < this->filasAux ; i++){
-		for(int j  = 0 ; j < this->columnasAux ; j++){
-			cout<<"  "<<this->matrizId[i][j]<<"  ";
-		}cout<<"\n";
-	}
-	cout<<"\n\n\n___________________ Vector Resultante ___________________\n\n\n";
-	for(int i = 0 ; i < this->filasAux ; i++){
-		cout<<"\n  "<<this->vectorRt[i]<<"  ";
-	}
-	cout<<"\n\n\n____________________________________________________________________________";
+	
+    cout << "\n\n\n=================== Matriz ===================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        for (int j = 0; j < this->columnasAux; j++) {
+            cout << setw(10) << fixed << setprecision(2) << this->matriz[i][j];
+        }
+        cout << "\n";
+    }
+
+    cout << "\n\n\n=================== Matriz Inversa ===================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        for (int j = 0; j < this->columnasAux; j++) {
+            cout << setw(10) << fixed << setprecision(2) << this->matrizInv[i][j];
+        }
+        cout << "\n";
+    }
+
+    cout << "\n\n\n=================== Matriz Identidad =================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        for (int j = 0; j < this->columnasAux; j++) {
+            cout << setw(10) << fixed << setprecision(2) << this->matrizId[i][j];
+        }
+        cout << "\n";
+    }
+
+    cout << "\n\n\n=================== Vector Resultante ================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        cout << setw(10) << fixed << setprecision(2) << this->vectorRt[i] << "\n";
+    }
+
+    cout << "\n\n\n=================== Matriz Completa ==================\n\n";
+    for (int i = 0; i < this->filasAux; i++) {
+        for (int j = 0; j < this->columnasAux; j++) {
+            cout << setw(10) << fixed << setprecision(2) << this->matriz[i][j];
+        }
+        cout << " | ";
+        for (int j = 0; j < this->columnasAux; j++) {
+            cout << setw(10) << fixed << setprecision(2) << this->matrizId[i][j];
+        }
+        cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorRt[i];
+        cout << "\n";
+    }
+
+    cout << "\n\n\n=====================================================\n\n";
 }
 
 void Matriz::imprimirMatriz() {
