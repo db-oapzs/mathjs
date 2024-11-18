@@ -160,8 +160,10 @@ void Matriz::llenarMatrices()
         {
             for (int j = 0; j < this->columnas; j++)
             {
+            	cout<<"\n Datos de x["<<i+1<<"] ";
                 cin >> this->matriz[i][j];
             }
+            	cout<<"\n Datos del vector x["<<i+1<<"] ";
             cin >> this->vectorRt[i];
         }
 
@@ -318,6 +320,7 @@ void Matriz::proceso()
 	        {
 	            cout << setw(10) << fixed << setprecision(2) << this->matriz[i][j];
 	        }
+        	cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorRt[i];
 	        cout << "\n";
 	    }
         this->metodo();
