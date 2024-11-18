@@ -214,7 +214,7 @@ void Matriz::imprimirMatriz()
     {
         for (int j = 0; j < this->columnasAux; j++)
         {
-            cout << setw(10) << fixed << setprecision(2) << this->matriz[i][j];
+            cout << setw(10) << fixed << setprecision(5) << this->matriz[i][j];
         }
         cout << "\n";
     }
@@ -224,7 +224,7 @@ void Matriz::imprimirMatriz()
     {
         for (int j = 0; j < this->columnasAux; j++)
         {
-            cout << setw(10) << fixed << setprecision(2) << this->matrizInv[i][j];
+            cout << setw(10) << fixed << setprecision(5) << this->matrizInv[i][j];
         }
         cout << "\n";
     }
@@ -234,7 +234,7 @@ void Matriz::imprimirMatriz()
     {
         for (int j = 0; j < this->columnasAux; j++)
         {
-            cout << setw(10) << fixed << setprecision(2) << this->matrizId[i][j];
+            cout << setw(10) << fixed << setprecision(5) << this->matrizId[i][j];
         }
         cout << "\n";
     }
@@ -242,13 +242,13 @@ void Matriz::imprimirMatriz()
     cout << "\n\n\n=================== Vector Resultante ================\n\n";
     for (int i = 0; i < this->filasAux; i++)
     {
-        cout << setw(10) << fixed << setprecision(2) << this->vectorRt[i] << "\n";
+        cout << setw(10) << fixed << setprecision(10) << this->vectorRt[i] << "\n";
     }
 
-    cout << "\n\n\n=================== Vector Inverzo Resultante ================\n\n";
+    cout << "\n\n\n=================== Vector Inverza Resultante ================\n\n";
     for (int i = 0; i < this->filasAux; i++)
     {
-        cout << setw(10) << fixed << setprecision(2) << this->vectorInv[i] << "\n";
+        cout << setw(10) << fixed << setprecision(10) << this->vectorInv[i] << "\n";
     }
 
     cout << "\n\n\n=================== Matriz Completa ==================\n\n";
@@ -256,15 +256,15 @@ void Matriz::imprimirMatriz()
     {
         for (int j = 0; j < this->columnasAux; j++)
         {
-            cout << setw(10) << fixed << setprecision(2) << this->matriz[i][j];
+            cout << setw(10) << fixed << setprecision(1) << this->matriz[i][j];
         }
         cout << " | ";
         for (int j = 0; j < this->columnasAux; j++)
         {
-            cout << setw(10) << fixed << setprecision(2) << this->matrizId[i][j];
+            cout << setw(10) << fixed << setprecision(5) << this->matrizId[i][j];
         }
-        cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorRt[i];
-        cout << " | " << setw(10) << fixed << setprecision(2) << this->vectorInv[i];
+        cout << " | " << setw(10) << fixed << setprecision(10) << this->vectorRt[i];
+        cout << " | " << setw(10) << fixed << setprecision(10) << this->vectorInv[i];
         cout << "\n";
     }
 
