@@ -187,9 +187,9 @@ void Matriz::llenarMatrices()
         {
             for (int j = 0; j < this->columnas; j++)
             {
-                this->matriz[i][j] = rand() % 20 + 1;
+				this->matriz[i][j] = -50 + rand() % (50 - (-50) + 1);
             }
-            this->vectorRt[i] = rand() % 50 + 1;
+            this->vectorRt[i] =-50 + rand() % (100 - (-50) + 1);
         }
 
         for (int i = 0; i < this->filasAux; i++)
